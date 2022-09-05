@@ -12,12 +12,16 @@ def data_split(df, test_size = 0.25, random_state = 42):
     return train_test_split(features, target, test_size = .25, random_state = 42)
 
 
-def rsearch(iter:int, est, params, n_cv = 3):
-    return RandomizedSearchCV(estimator=est, param_distributions=params, n_iter=iter, scoring='squared_error', verbose=0, cv = n_cv, n_jobs=-1)
+def rsearch(iter:int, est, params, x, y, n_cv = 3):
+    randomized_search = RandomizedSearchCV(estimator=est, param_distributions=params, n_iter=iter, scoring='neg_root_mean_squared_error', verbose=0, cv = n_cv, n_jobs=-1)
+    randomized_search.fit(x, y)
+    return randomized_search
 
 
-def gsearch(est, params, n_cv = 3):
-    return GridSearchCV(estimator= est, param_grid=params, scoring='squared_error', verbose=0, cv = n_cv, n_jobs=-1)
+def gsearch(est, params, x, y, n_cv = 3):
+    grid_search = GridSearchCV(estimator= est, param_grid=params, scoring='neg_root_mean_squared_error', verbose=0, cv = n_cv, n_jobs=-1)
+    grid_search.fit(x, y)
+    return grid_search
 
 
 def model_metric(model, trainX, trainy, testX, testy):
