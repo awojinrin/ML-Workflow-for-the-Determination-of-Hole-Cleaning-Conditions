@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import r2_score as r2, mean_absolute_error as mae
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, RandomizedSearchCV, GridSearchCV
 
 
 def data_split(df, test_size = 0.25, random_state = 42):
@@ -10,6 +10,14 @@ def data_split(df, test_size = 0.25, random_state = 42):
     target = df.Concentration
 
     return train_test_split(features, target, test_size = .25, random_state = 42)
+
+
+def rsearch(iter:int, est, params, n_cv = 3):
+    return RandomizedSearchCV(estimator=est, param_distributions=params, n_iter=iter, scoring='squared_error', verbose=0, cv = n_cv, n_jobs=-1)
+
+
+def gsearch(est, params, n_cv = 3):
+    return GridSearchCV(estimator= est, param_grid=params, scoring='squared_error', verbose=0, cv = n_cv, n_jobs=-1)
 
 
 def model_metric(model, trainX, trainy, testX, testy):
