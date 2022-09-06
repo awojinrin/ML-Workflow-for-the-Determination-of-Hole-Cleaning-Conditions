@@ -105,7 +105,7 @@ def model_visuals(y_train, y_test, train_pred, test_pred, filename = str(None), 
     plt.show()
     
     if filename != None:
-        plt.savefig(fname = str(filename) + '.png', format = 'png')
+        plt.savefig(fname = 'files/' + str(filename) + '.png', format = 'png')
 
 
 def model_report(model, trainX, trainy, testX, testy, filename = str(None), model_type = str(None)):
