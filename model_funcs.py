@@ -108,7 +108,7 @@ def model_visuals(y_train, y_test, train_pred, test_pred, filename = str(None), 
         plt.savefig(fname = 'files/' + str(filename) + '.png', format = 'png')
 
 
-def model_report(model, trainX, trainy, testX, testy, filename = str(None), model_type = str(None)):
+def model_report(model, trainX, trainy, testX, testy, filename :str = None, model_type: str = None):
     """
     Helper function for training the model, as well as easy evaluation and visualization of model performance.
     A combinaton of model_metric and model_visuals

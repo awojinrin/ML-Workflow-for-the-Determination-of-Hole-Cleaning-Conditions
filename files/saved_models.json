@@ -1,0 +1,1 @@
+{"rf": "RandomForestRegressor(random_state = 42, max_depth=150, n_estimators=66)", "gb": "GradientBoostingRegressor(random_state = 42)", "adb": "AdaBoostRegressor(base_estimator=GradientBoostingRegressor(random_state=42), learning_rate=0.001, loss=\"exponential\", n_estimators=61, random_state=42)"}
