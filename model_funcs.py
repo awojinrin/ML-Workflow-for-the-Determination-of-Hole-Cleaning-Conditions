@@ -24,7 +24,7 @@ def gsearch(est, params, x, y, n_cv = 3):
     return grid_search
 
 
-def model_metric(model, trainX, trainy, testX, testy):
+def model_metric(model, trainX, trainy, testX, testy, silent: bool = False):
     """
     Helper function that trains the model and outputs the MAE and R2 Score for a given model
     
@@ -50,14 +50,15 @@ def model_metric(model, trainX, trainy, testX, testy):
     train_r2_score = r2(trainy, train_prediction)
     test_r2_score = r2(testy, test_prediction)
     
-    print('TRAINING DATASET')
-    print('MAE: ', round(train_mae*100, 2), '%')
-    print('R2_SCORE: ', train_r2_score)
-    print('----------------------------')    
-    print('TEST DATASET')
-    print('MAE: ', round(test_mae*100, 2), '%')
-    print('R2_SCORE: ', test_r2_score)
-    print('----------------------------')    
+    if not silent:
+        print('TRAINING DATASET')
+        print('MAE: ', round(train_mae*100, 2), '%')
+        print('R2_SCORE: ', train_r2_score)
+        print('----------------------------')    
+        print('TEST DATASET')
+        print('MAE: ', round(test_mae*100, 2), '%')
+        print('R2_SCORE: ', test_r2_score)
+        print('----------------------------')    
 
     return train_prediction, test_prediction
 
