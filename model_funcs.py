@@ -59,7 +59,7 @@ def model_metric(model, trainX, trainy, testX, testy, silent: bool = False):
         print('MAE: ', round(test_mae*100, 2), '%')
         print('R2_SCORE: ', test_r2_score)
         print('----------------------------')    
-
+    
     return train_prediction, test_prediction
 
 
