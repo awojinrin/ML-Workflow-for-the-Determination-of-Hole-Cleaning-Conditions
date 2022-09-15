@@ -13,14 +13,11 @@ def row_optimizer(model, row_data, pct_range, constant_params = [], flex_params 
     Parameters
     -----------
     model : trained model to be used for optimizing drilling parameters
-    density : list containing densities to be investigated
-    yp : list containing yield points to be investigated
-    temp : list containing temperatures to be investigated
-    rop: list containing rates of penetration to be investigated
-    pipe_rot : list containing pipe rotation speeds to be investigated
-    flow_rate : list containing flow rates to be investigated
-    inclination : list containing inclinations to be investigated
-    eccentricity : list containing eccentricity values to be investigated
+    row_data : series object containing the current drilling parameters
+    pct_range : float, specifies what percentage range of the current values the search should be conducted in
+    constant_params : parameters to be left the same
+    flex_params : parameters to permutate over
+    all_result : returns the optimized values and the predicted concentration if true, else returns just the predicted concentration of the optimized parameters
     
     Returns
     --------
